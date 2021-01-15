@@ -1,15 +1,14 @@
 import Api from "../api";
-import { config } from "../../config/axiosConfig";
-
-import { RequestParams } from "../../interfaces/requestParams";
+import {config} from "../../config/axiosConfig";
+import {RequestParams} from "../../interfaces/requestParams";
 
 const apiUrl = "/api/users";
 
 export interface User {
     id: number;
     email: string;
-    firstName: string;
-    lastName: string;
+    first_name: string;
+    last_name: string;
     avatar: string;
 }
 
@@ -21,15 +20,16 @@ type UserDetailResponse = {
     data: User;
 };
 
-interface UserRequestParams extends RequestParams {}
+interface UserRequestParams extends RequestParams {
+}
 
 export default class UserRepository extends Api {
     public getList(params?: UserRequestParams) {
-        return this.get<UserListResponse>(apiUrl, { params });
+        return this.get<UserListResponse>(apiUrl, {params});
     }
 
     public getDetail(id: number, params?: UserRequestParams) {
-        return this.get<UserDetailResponse>(`${apiUrl}/${id}`, { params });
+        return this.get<UserDetailResponse>(`${apiUrl}/${id}`, {params});
     }
 }
 

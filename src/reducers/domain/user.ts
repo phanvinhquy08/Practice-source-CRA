@@ -20,7 +20,7 @@ const { reducer, actions } = createSlice({
     name: "user",
     initialState,
     reducers: {
-        setloading: (state: State, action: PayloadAction<boolean>) => {
+        setLoading: (state: State, action: PayloadAction<boolean>) => {
             state.loading = action.payload;
         },
         updateData: (state: State, action: PayloadAction<User[]>) => {
@@ -38,10 +38,7 @@ const userDetailSelector = createSelector(
     (state: RootState) => state.domain.user,
     (state: RootState, id: number) => id,
     (state: RootState, id: number, name: string) => name,
-    (user, id, name) => {
-        console.log(name);
-        return user.data.find((x) => x.id === id);
-    }
+    (user, id, name) => user.data.find((x) => x.id === id)
 );
 
 export { reducer };
