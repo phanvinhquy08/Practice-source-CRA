@@ -1,10 +1,3 @@
-const { override, addBabelPlugins, addBabelPreset } = require("customize-cra");
+const { override, addBabelPreset } = require("customize-cra");
 
-module.exports = override(
-    addBabelPlugins(
-        "@babel/plugin-proposal-nullish-coalescing-operator",
-        "@babel/plugin-syntax-optional-chaining",
-        "@babel/plugin-transform-typescript"
-    ),
-    addBabelPreset("@babel/preset-typescript")
-);
+module.exports = override(addBabelPreset("@babel/preset-typescript"));

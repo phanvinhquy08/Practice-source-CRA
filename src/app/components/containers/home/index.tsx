@@ -3,12 +3,12 @@ import { useDispatch } from "react-redux";
 
 import { getUserList } from "../../../../usecase/user";
 
-const User: React.FC = () => {
+const Home: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserList());
   }, [dispatch]);
-  return <div>User</div>;
+  return <div>Home</div>;
 };
 
-export default User;
+export default Home;

@@ -44,3 +44,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React Index documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Library
+
+1. Tìm hiểu về axios interceptors và refresh token
+2. Set up thư viện styled-component(global style), rebassjs
+3. Reducer UI (loading router, notification, responsive)
+4. React router xử lý lỗi (404, 500, 401)
+5. Các Provider (antd, styled, Intl)
+6. Component responsive
