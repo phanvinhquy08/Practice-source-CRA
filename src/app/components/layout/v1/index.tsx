@@ -2,7 +2,7 @@ import React from "react";
 import { Layout } from "antd";
 import styled from "styled-components";
 
-import SiderBar from "./SiderBar";
+import SideBar from "./SiderBar";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -11,7 +11,7 @@ const { Content } = Layout;
 const AppLayout: React.FC = ({ children }) => {
   return (
     <Layout>
-      <SiderBar />
+      <SideBar />
       <LayoutWrapper>
         <Header />
         <MainContent>
