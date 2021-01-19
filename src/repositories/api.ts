@@ -1,4 +1,4 @@
-import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
 import NProgress from "nprogress";
 
 import Axios from "../libs/axios";
@@ -25,9 +25,9 @@ export default class Api extends Axios {
         NProgress.done();
         return response;
       },
-      (error) => {
+      (error: AxiosError) => {
         NProgress.done();
-        console.log(error);
+        console.log(error.response?.status);
         if (error) {
           history.push("/error");
         }

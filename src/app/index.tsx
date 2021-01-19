@@ -3,23 +3,25 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { Spin } from "antd";
 import styled from "styled-components";
 
-import { Login, Error } from "./pages";
+import routerObject from "./routers";
 import AppLayOut from "./components/layout";
-import router from "./router";
+
+const { LOGIN, ERROR } = routerObject;
+const privateRouter = Object.values(routerObject);
 
 const App: React.FC = () => {
   return (
     <div className='App' style={{ minHeight: "100vh" }}>
       <React.Suspense
         fallback={
-          <Loading>
+          <Loading style={{ minHeight: "100vh" }}>
             <Spin size='large' />
           </Loading>
         }
       >
         <Switch>
-          <Route path='/login' component={Login} />
-          <Route path='/error' component={Error} />
+          <Route path={LOGIN.path} component={LOGIN.component} />
+          <Route path={ERROR.path} component={ERROR.component} />
           <Route
             render={() => {
               return (
@@ -32,7 +34,7 @@ const App: React.FC = () => {
                     }
                   >
                     <Switch>
-                      {router
+                      {privateRouter
                         .filter((x) => x.isAuthen)
                         .map((route, index) => (
                           <Route {...route} key={index} />

@@ -1,8 +1,16 @@
 import React from "react";
 import { Menu } from "antd";
 import { MenuProps } from "antd/lib/menu";
-import { HomeOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  HomeOutlined,
+  UserOutlined,
+  UserSwitchOutlined,
+} from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
+
+import routers from "../../../../../routers";
+
+const privateRouter = Object.values(routers);
 
 type Props = {} & MenuProps;
 
@@ -23,6 +31,11 @@ const menuItems: MenuItemProps[] = [
     icon: <UserOutlined />,
     name: "User",
   },
+  {
+    path: "/passenger",
+    icon: <UserSwitchOutlined />,
+    name: "Passenger",
+  },
 ];
 
 const MenuBar: React.FC<Props> = ({ ...rest }) => {
@@ -41,11 +54,14 @@ const MenuBar: React.FC<Props> = ({ ...rest }) => {
       selectedKeys={getKey()}
       {...rest}
     >
-      {menuItems.map((item) => (
-        <Menu.Item key={item.path} icon={item.icon}>
-          <Link to={item.path}>{item.name}</Link>
-        </Menu.Item>
-      ))}
+      {privateRouter.map(
+        (item) =>
+          item.icon && (
+            <Menu.Item key={item.path as string} icon={item.icon}>
+              <Link to={item.path as string}>{item.name}</Link>
+            </Menu.Item>
+          )
+      )}
     </Menu>
   );
 };

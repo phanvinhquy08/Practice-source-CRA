@@ -7,7 +7,6 @@ const apiUrl = "/passenger";
 export interface Passenger {
   name: string;
   trip: number;
-
 }
 
 type PassengerListResponse = {
@@ -18,13 +17,16 @@ type PassengerDetailResponse = {
   data: Passenger;
 };
 
-interface PassengerRequestParams extends RequestParams {
+export interface PassengerRequestParams extends RequestParams {
   size?: number;
 }
 
 export default class PassengerRepository extends Api {
   public getList(params?: PassengerRequestParams) {
     return this.get<PassengerListResponse>(apiUrl, { params });
+  }
+  public getDetail(params?: PassengerRequestParams) {
+    return this.get<PassengerDetailResponse>(apiUrl, { params });
   }
 }
 

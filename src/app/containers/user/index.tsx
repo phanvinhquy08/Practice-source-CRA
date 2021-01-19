@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { getUserList } from "../../../../usecase/user";
+import User from "../../components/pages/user";
+import { getUserList } from "../../../usecase/user";
 
-const User: React.FC = () => {
+const UserContainer: React.FC = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getUserList());
   }, [dispatch]);
-  return <div>User</div>;
+
+  return <User />;
 };
 
-export default User;
+export default UserContainer;
