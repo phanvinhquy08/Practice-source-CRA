@@ -53,3 +53,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 4. React router xử lý lỗi (404, 500, 401)
 5. Các Provider (antd, styled, Intl)
 6. Component responsive
+7. Các hook useEffect, useCallback, useMemo, và custom hook
+8. Các cách gọi component: render, component, icon
