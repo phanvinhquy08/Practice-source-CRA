@@ -1,35 +1,41 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
 import { RootState } from "..";
+import _ from "lodash";
 
 import { Passenger } from "../../repositories/passenger";
 
+export type PassengerWithLoadMore = Passenger & { loading?: boolean };
+
 interface State {
-  data: Passenger[];
-  loading: boolean;
-  error: Error | null;
+  data: PassengerWithLoadMore[];
+  initLoading: boolean;
 }
 
 const initialState: State = {
   data: [],
-  loading: false,
-  error: null,
+  initLoading: true,
 };
 
 const { reducer, actions } = createSlice({
   name: "passenger",
   initialState,
   reducers: {
-    setLoading: (state: State, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
+    updateData: (
+      state: State,
+      action: PayloadAction<PassengerWithLoadMore[]>
+    ) => {
+      if (_.isEmpty(action.payload)) {
+        state.data = action.payload;
+        return;
+      }
+      state.data = _.concat(state.data, action.payload);
     },
-    updateData: (state: State, action: PayloadAction<Passenger[]>) => {
-      state.loading = false;
-      state.data = action.payload;
+    setInitLoading: (state: State, action: PayloadAction<boolean>) => {
+      state.initLoading = action.payload;
     },
-    setError: (state: State, action: PayloadAction<string>) => {
-      state.loading = false;
-      state.error = new Error(action.payload);
+    filterData: (state: State) => {
+      state.data = _.filter(state.data, (x) => !x.loading);
     },
   },
 });

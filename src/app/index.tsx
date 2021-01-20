@@ -49,7 +49,7 @@ const App: React.FC = () => {
         <Switch>
           <Route {...LOGIN} />
           <Route {...ERROR} />
-          <Route render={PrivateRouter} />
+          <Route component={PrivateRouter} />
         </Switch>
       </React.Suspense>
     </div>

@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 import {
   passengerRepository,
   PassengerRequestParams,
@@ -7,14 +9,19 @@ import passengerAction from "../../reducers/domain/passenger";
 
 export const fetchResource = (
   params?: PassengerRequestParams
-): Action => async (dispatch) => {
+): Action => async (dispatch, getStore) => {
   try {
-    dispatch(passengerAction.setLoading(true));
+    const fakeData = getStore()
+      .domain.passenger.data.slice(0, params?.size)
+      .map((x) => ({ ...x, loading: true }));
+
+    dispatch(passengerAction.updateData(fakeData));
+    window.dispatchEvent(new Event("resize"));
     const res = await passengerRepository.getList(params);
     const { data } = res.data;
+
+    dispatch(passengerAction.filterData());
     dispatch(passengerAction.updateData(data));
-    dispatch(passengerAction.setLoading(false));
-  } catch (error) {
-    dispatch(passengerAction.setError(error.message));
-  }
+    dispatch(passengerAction.setInitLoading(false));
+  } catch (error) {}
 };

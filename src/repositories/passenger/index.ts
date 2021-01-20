@@ -6,7 +6,7 @@ const apiUrl = "/passenger";
 
 export interface Passenger {
   name: string;
-  trip: number;
+  trips: number;
 }
 
 type PassengerListResponse = {
