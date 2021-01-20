@@ -5,7 +5,12 @@ import useConnect from "./useConnect";
 import LoadMoreButton from "./LoadMoreButton";
 
 const PassengerLoadMore: React.FC = () => {
-  const { listPassenger, initLoading, handleLoadMore } = useConnect();
+  const {
+    listPassenger,
+    initLoading,
+    handleLoadMore,
+    isLoadMore,
+  } = useConnect();
 
   return (
     <Card>
@@ -13,7 +18,8 @@ const PassengerLoadMore: React.FC = () => {
         loading={initLoading}
         itemLayout='horizontal'
         loadMore={
-          !initLoading && <LoadMoreButton handleLoadMore={handleLoadMore} />
+          !initLoading &&
+          !isLoadMore && <LoadMoreButton handleLoadMore={handleLoadMore} />
         }
         dataSource={listPassenger}
         renderItem={(item) => (

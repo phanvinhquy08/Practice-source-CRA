@@ -23,7 +23,9 @@ const useConnect = () => {
     setPage(page + 1);
   };
 
-  return { listPassenger, initLoading, handleLoadMore };
+  const isLoadMore = listPassenger.some((passenger) => passenger.loading);
+
+  return { listPassenger, initLoading, handleLoadMore, isLoadMore };
 };
 
 export default useConnect;

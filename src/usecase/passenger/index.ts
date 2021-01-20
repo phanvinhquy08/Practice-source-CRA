@@ -16,7 +16,6 @@ export const fetchResource = (
       .map((x) => ({ ...x, loading: true }));
 
     dispatch(passengerAction.updateData(fakeData));
-    window.dispatchEvent(new Event("resize"));
     const res = await passengerRepository.getList(params);
     const { data } = res.data;
 
