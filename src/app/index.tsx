@@ -5,17 +5,20 @@ import styled from "styled-components";
 
 import routerObject from "./routers";
 import AppLayOut from "./components/layout";
+import { examinationNormalize } from "./testNormalizr";
+
+console.log(examinationNormalize);
 
 const { LOGIN, ERROR } = routerObject;
 const privateRoutes = Object.values(routerObject);
 
 const PrivateRouter = () => {
   return (
-    <AppLayOut ver='v1'>
+    <AppLayOut ver="v1">
       <React.Suspense
         fallback={
           <Loading>
-            <Spin size='large' />
+            <Spin size="large" />
           </Loading>
         }
       >
@@ -38,11 +41,11 @@ const PrivateRouter = () => {
 };
 const App: React.FC = () => {
   return (
-    <div className='App' style={{ minHeight: "100vh" }}>
+    <div className="App" style={{ minHeight: "100vh" }}>
       <React.Suspense
         fallback={
           <Loading style={{ minHeight: "100vh" }}>
-            <Spin size='large' />
+            <Spin size="large" />
           </Loading>
         }
       >

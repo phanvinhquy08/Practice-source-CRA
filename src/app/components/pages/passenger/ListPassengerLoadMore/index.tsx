@@ -13,10 +13,10 @@ const PassengerLoadMore: React.FC = () => {
   } = useConnect();
 
   return (
-    <Card>
+    <Card style={{ maxHeight: "100%" }}>
       <List
         loading={initLoading}
-        itemLayout='horizontal'
+        itemLayout="horizontal"
         loadMore={
           !initLoading &&
           !isLoadMore && <LoadMoreButton handleLoadMore={handleLoadMore} />
@@ -25,16 +25,16 @@ const PassengerLoadMore: React.FC = () => {
         renderItem={(item) => (
           <List.Item
             actions={[
-              <a key='list-loadmore-edit'>edit</a>,
-              <a key='list-loadmore-more'>more</a>,
+              <a key="list-loadmore-edit">edit</a>,
+              <a key="list-loadmore-more">more</a>,
             ]}
           >
             <Skeleton avatar title={false} loading={item.loading} active>
               <List.Item.Meta
                 avatar={
-                  <Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />
+                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                 }
-                title={<a href='https://ant.design'>{item.name}</a>}
+                title={<a href="https://ant.design">{item.name}</a>}
                 description={item.trips}
               />
               <div>content</div>

@@ -5,7 +5,7 @@ import ListPassengerLoadMore from "./ListPassengerLoadMore";
 
 const Passenger: React.FC = () => {
   return (
-    <Row gutter={24}>
+    <Row gutter={24} style={{ height: "100%" }}>
       <Col span={12}>
         <ListPassengerLoadMore />
       </Col>

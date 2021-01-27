@@ -29,7 +29,6 @@ const ContentWrapper = styled.div`
 
 const MainContent = styled(Content)`
   margin: 24px 24px;
-  flex: 1;
 `;
 
 const LayoutWrapper = styled(Layout)`
